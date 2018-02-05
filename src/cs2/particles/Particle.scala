@@ -13,5 +13,7 @@ class Particle (private var pos:Vec2) {
   def timeStep() {
     pos += vel
   }
-  
-}
+  def applyForce(acc:Vec2) {
+    vel += acc
+  }
+ }

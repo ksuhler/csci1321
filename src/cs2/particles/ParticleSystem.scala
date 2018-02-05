@@ -7,7 +7,7 @@ class ParticleSystem (private var orig:Vec2) {
   private var parts:List[Particle] = Nil
   
   def addParticle() {
-    parts ::= new Particle(new Vec2(orig.x, orig.y))
+    parts ::= new Particle(orig.clone)
   }
   
   def display(g:GraphicsContext) {
@@ -17,5 +17,7 @@ class ParticleSystem (private var orig:Vec2) {
   def timeStep() {
     for(p <- parts) p.timeStep
   }
-  
+  def applyForce(acc:Vec2) {
+    for(p <- parts) p.applyForce(acc)
+  }
 }

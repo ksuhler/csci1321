@@ -3,7 +3,12 @@ package cs2.util
 class Vec2 (var x:Double, var y:Double) {
 	//Default constructor creates a Vec2 of zeroes
 	def this() = this(0,0)
-      
+  
+	//copy constructor
+	def this(toCopy:Vec2) = this(toCopy.x, toCopy.y)
+	
+	override def clone():Vec2 = new Vec2(this.x, this.y)
+	
 	//Provided toString method simplifies printing, e.g. println(vec.toString) OR println(vec)
 	override def toString():String = "("+x+","+y+")"
 
