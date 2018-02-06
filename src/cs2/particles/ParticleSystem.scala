@@ -7,7 +7,13 @@ class ParticleSystem (private var orig:Vec2) {
   private var parts:List[Particle] = Nil
   
   def addParticle() {
-    parts ::= new Particle(orig.clone)
+    parts = new RainbowParticle(orig.clone) :: parts
+    /*if(math.random < 0.5)
+    parts ::= new RoundParticle(new Vec2(orig)) :: parts
+    else
+    parts ::= new SquareParticle(new Vec2(orig)) 
+    * */
+    */
   }
   
   def display(g:GraphicsContext) {
