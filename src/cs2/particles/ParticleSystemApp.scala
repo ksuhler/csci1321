@@ -1,20 +1,18 @@
 package cs2.particles
 
 import scalafx.Includes._
-import scalafx.application.JFXApp
-import scalafx.scene.Scene
 import cs2.util.Vec2
+import scalafx.application.JFXApp
 import scalafx.scene.canvas.Canvas
+import scalafx.scene.Scene
 import scalafx.animation.AnimationTimer
-import scalafx.scene.paint.Color
-import scalafx.scene.canvas.Canvas.sfxCanvas2jfx
-import scalafx.scene.paint.Color.sfxColor2jfx
 import scalafx.scene.input.MouseEvent
+import scalafx.scene.paint.Color
+
 
 
 object ParticleSystemApp {
-  
-  val app = new JFXApp {
+    val app = new JFXApp {
     stage = new JFXApp.PrimaryStage {
       title = "Particles!"
       scene = new Scene(600,400) {
@@ -37,9 +35,10 @@ object ParticleSystemApp {
          wind = new Vec2((e.x-300)/300, 0)
         }
         
+        val backg = new RainbowBackround(600,400)
+        
         val timer = AnimationTimer (t => {
-          g.setFill(Color White)
-          g.fillRect(0,0, 600,400)
+          backg.display(g)
           for(ps <- psList) {
             ps.display(g)
             ps.timeStep
@@ -51,9 +50,9 @@ object ParticleSystemApp {
         timer.start
       }
     }
-  }
+}
   
-  def main(args:Array[String]) {
+  def main(args:Array[String]){
     app.main(args)
   }
   

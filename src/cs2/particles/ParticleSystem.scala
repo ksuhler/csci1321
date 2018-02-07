@@ -7,17 +7,16 @@ class ParticleSystem (private var orig:Vec2) {
   private var parts:List[Particle] = Nil
   
   def addParticle() {
-    parts = new RainbowParticle(orig.clone) :: parts
+    parts = new RainbowParticle(new Vec2(orig)) :: parts
     /*if(math.random < 0.5)
     parts ::= new RoundParticle(new Vec2(orig)) :: parts
     else
     parts ::= new SquareParticle(new Vec2(orig)) 
     * */
-    */
   }
   
   def display(g:GraphicsContext) {
-    for(p <- parts) p.display(g)
+    parts.foreach(x => x.display(g))
   }
   
   def timeStep() {
