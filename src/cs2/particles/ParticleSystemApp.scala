@@ -21,16 +21,15 @@ object ParticleSystemApp {
         
         val g = canvas.getGraphicsContext2D
         g.strokeRect(100,200, 300,100)
-        var wind = new Vec2
-        
+       
         var psList:List[ParticleSystem] = Nil
-        
         canvas.onMouseClicked = (e:MouseEvent) => {
           psList ::= new ParticleSystem(new Vec2(e.x,e.y))
         }
         
         val ps = new ParticleSystem (new Vec2(300,100))
         
+         var wind = new Vec2
         canvas.onMouseMoved = (e:MouseEvent) => {
          wind = new Vec2((e.x-300)/300, 0)
         }
