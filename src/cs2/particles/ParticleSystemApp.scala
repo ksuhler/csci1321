@@ -8,6 +8,9 @@ import scalafx.scene.Scene
 import scalafx.animation.AnimationTimer
 import scalafx.scene.input.MouseEvent
 import scalafx.scene.paint.Color
+import scalafx.scene.image.Image
+import scalafx.scene.input.KeyEvent
+import scalafx.scene.input.KeyCode
 
 
 
@@ -20,16 +23,25 @@ object ParticleSystemApp {
         content = canvas
         
         val g = canvas.getGraphicsContext2D
-        g.strokeRect(100,200, 300,100)
+        //g.strokeRect(100,200, 300,100)
+       var wind = new Vec2
        
         var psList:List[ParticleSystem] = Nil
+        
         canvas.onMouseClicked = (e:MouseEvent) => {
           psList ::= new ParticleSystem(new Vec2(e.x,e.y))
         }
         
-        val ps = new ParticleSystem (new Vec2(300,100))
+       // val ps = new ParticleSystem (new Vec2(300,100))
         
-         var wind = new Vec2
+        canvas.onKeyPressed = (e:KeyEvent) => {
+          if(e.code == KeyCode.Space) {
+            psList = Nil
+          }
+        }
+        
+        val partImage = new Image("file:smoke.png")
+     
         canvas.onMouseMoved = (e:MouseEvent) => {
          wind = new Vec2((e.x-300)/300, 0)
         }

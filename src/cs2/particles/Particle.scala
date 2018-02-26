@@ -12,8 +12,9 @@ abstract class Particle (protected var pos:Vec2) {
     g.strokeOval(pos.x,pos.y, 20,20)
     
   }
-  def timeStep() {
+  def timeStep():Boolean = {
     pos += vel
+    pos.y < -200 || pos.y > 600 || pos.x < -200 || pos.x > 800
   }
   def applyForce(acc:Vec2) {
     vel += acc

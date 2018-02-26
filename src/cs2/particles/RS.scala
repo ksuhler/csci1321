@@ -5,9 +5,9 @@ import scalafx.scene.paint.Color
 
 class RainbowParticle(initPos:Vec2) extends RoundParticle(initPos) with ColorRotation {
   
-  override def timeStep() {
-    super.timeStep
+  override def timeStep():Boolean = {
     col = stepColor
+    super.timeStep
   }
   
 }
